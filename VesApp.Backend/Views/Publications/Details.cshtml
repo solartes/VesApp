@@ -1,0 +1,66 @@
+﻿@model VesApp.Domain.Publication
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Publication</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrlVideo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrlVideo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrlImagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrlImagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sacerdote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sacerdote)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPublicacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
