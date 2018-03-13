@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VesApp.Views.ReflexionPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Reflexiones">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Publications}"
+            Padding="5">
+            <ListView
+                ItemsSource="{Binding Publications}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Label Text="{Binding Titulo}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
