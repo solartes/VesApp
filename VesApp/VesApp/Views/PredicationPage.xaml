@@ -2,12 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VesApp.Views.PredicationPage"
-             Title="Reflexiones">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Predicaciones">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Predicaciones"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout >
+            <Label Text="To Do Predications"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -58,6 +58,7 @@ namespace VesApp.ViewModels
 
             var list = (List<Publication>)response.Result;
             this.Publications = new ObservableCollection<Publication>(list);
+            
         }    
         #endregion
 

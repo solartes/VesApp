@@ -8,7 +8,7 @@ namespace VesApp.ViewModels
     public class MainViewModel
     {
         #region Properties
-        public ObservableCollection<MenuItemViewModel> Menus { get; set; }
+        public ObservableCollection<MenuItemViewModel> Menus { get; set; }        
         #endregion
 
         #region ViewModels
@@ -24,7 +24,7 @@ namespace VesApp.ViewModels
         #region Constructors
         public MainViewModel()
         {
-            instance = this;
+            instance = this;            
             this.Reflexion = new ReflexionViewModel();
             this.LoadMenu();
         }

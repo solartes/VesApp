@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using VesApp.Views;
+using Xamarin.Forms;
 
 namespace VesApp.ViewModels
 {
@@ -31,7 +33,10 @@ namespace VesApp.ViewModels
             }
             if (this.PageName == "PredicationPage")
             {
-
+                //MainViewModel.GetInstance.Clase= new clase();
+                //Application.Current.MainPage = new PredicationPage();
+                //Application.Current.MainPage.Navigation.PushAsync(new PredicationPage());
+                App.Navigator.PushAsync(new PredicationPage());
             }
         }
         #endregion

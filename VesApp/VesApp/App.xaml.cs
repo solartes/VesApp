@@ -10,7 +10,7 @@ namespace VesApp
 	public partial class App : Application
 	{
         #region Properties
-        public static NavigationPage Navigator { get; set; }
+        public static NavigationPage Navigator { get; internal set; }
         #endregion
 
         #region Constructors
@@ -18,7 +18,7 @@ namespace VesApp
 		{
 			InitializeComponent();
             MainPage = new MasterPage();
-            //MainPage = new NavigationPage(new ReflexionPage());
+            //MainPage = new PredicationPage();
         }
         #endregion
 

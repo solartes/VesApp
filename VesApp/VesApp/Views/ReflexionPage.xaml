@@ -5,17 +5,12 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Reflexiones">
     <ContentPage.Content>
-        <StackLayout
-            BindingContext="{Binding Publications}"
-            Padding="5">
-            <ListView
-                ItemsSource="{Binding Publications}">
+        <StackLayout BindingContext="{Binding Reflexion}">
+            <ListView ItemsSource="{Binding Publications}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Label Text="{Binding Titulo}"/>
-                            </Grid>
+                            <Label Text="{Binding Titulo}"></Label>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
