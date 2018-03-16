@@ -12,107 +12,107 @@ using VesApp.Domain;
 
 namespace VesApp.Backend.Controllers
 {
-    public class PublicationsController : Controller
+    public class EventsController : Controller
     {
-        private DateContextLocal db = new DateContextLocal();
+        private DataContextLocal db = new DataContextLocal();
 
-        // GET: Publications
+        // GET: Events
         public async Task<ActionResult> Index()
         {
-            return View(await db.Publications.ToListAsync());
+            return View(await db.Events.ToListAsync());
         }
 
-        // GET: Publications/Details/5
+        // GET: Events/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Publication publication = await db.Publications.FindAsync(id);
-            if (publication == null)
+            Event @event = await db.Events.FindAsync(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(publication);
+            return View(@event);
         }
 
-        // GET: Publications/Create
+        // GET: Events/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Publications/Create
+        // POST: Events/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdPublicacion,UrlVideo,UrlImagen,Text,Titulo,Fecha,Sacerdote")] Publication publication)
+        public async Task<ActionResult> Create([Bind(Include = "IdEvent,Titulo,Text,FechaEvento")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Publications.Add(publication);
+                db.Events.Add(@event);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(publication);
+            return View(@event);
         }
 
-        // GET: Publications/Edit/5
+        // GET: Events/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Publication publication = await db.Publications.FindAsync(id);
-            if (publication == null)
+            Event @event = await db.Events.FindAsync(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(publication);
+            return View(@event);
         }
 
-        // POST: Publications/Edit/5
+        // POST: Events/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdPublicacion,UrlVideo,UrlImagen,Text,Titulo,Fecha,Sacerdote")] Publication publication)
+        public async Task<ActionResult> Edit([Bind(Include = "IdEvent,Titulo,Text,FechaEvento")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(publication).State = EntityState.Modified;
+                db.Entry(@event).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(publication);
+            return View(@event);
         }
 
-        // GET: Publications/Delete/5
+        // GET: Events/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Publication publication = await db.Publications.FindAsync(id);
-            if (publication == null)
+            Event @event = await db.Events.FindAsync(id);
+            if (@event == null)
             {
                 return HttpNotFound();
             }
-            return View(publication);
+            return View(@event);
         }
 
-        // POST: Publications/Delete/5
+        // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Publication publication = await db.Publications.FindAsync(id);
-            db.Publications.Remove(publication);
+            Event @event = await db.Events.FindAsync(id);
+            db.Events.Remove(@event);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

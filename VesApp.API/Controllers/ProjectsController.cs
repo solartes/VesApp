@@ -13,44 +13,44 @@ using VesApp.Domain;
 
 namespace VesApp.API.Controllers
 {
-    public class PublicationsController : ApiController
+    public class ProjectsController : ApiController
     {
         private DataContext db = new DataContext();
 
-        // GET: api/Publications
-        public IQueryable<Publication> GetPublications()
+        // GET: api/Projects
+        public IQueryable<Project> GetProjects()
         {
-            return db.Publications;
+            return db.Projects;
         }
 
-        // GET: api/Publications/5
-        [ResponseType(typeof(Publication))]
-        public async Task<IHttpActionResult> GetPublication(int id)
+        // GET: api/Projects/5
+        [ResponseType(typeof(Project))]
+        public async Task<IHttpActionResult> GetProject(int id)
         {
-            Publication publication = await db.Publications.FindAsync(id);
-            if (publication == null)
+            Project project = await db.Projects.FindAsync(id);
+            if (project == null)
             {
                 return NotFound();
             }
 
-            return Ok(publication);
+            return Ok(project);
         }
 
-        // PUT: api/Publications/5
+        // PUT: api/Projects/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutPublication(int id, Publication publication)
+        public async Task<IHttpActionResult> PutProject(int id, Project project)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != publication.IdPublicacion)
+            if (id != project.IdProject)
             {
                 return BadRequest();
             }
 
-            db.Entry(publication).State = EntityState.Modified;
+            db.Entry(project).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace VesApp.API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PublicationExists(id))
+                if (!ProjectExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace VesApp.API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Publications
-        [ResponseType(typeof(Publication))]
-        public async Task<IHttpActionResult> PostPublication(Publication publication)
+        // POST: api/Projects
+        [ResponseType(typeof(Project))]
+        public async Task<IHttpActionResult> PostProject(Project project)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Publications.Add(publication);
+            db.Projects.Add(project);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = publication.IdPublicacion }, publication);
+            return CreatedAtRoute("DefaultApi", new { id = project.IdProject }, project);
         }
 
-        // DELETE: api/Publications/5
-        [ResponseType(typeof(Publication))]
-        public async Task<IHttpActionResult> DeletePublication(int id)
+        // DELETE: api/Projects/5
+        [ResponseType(typeof(Project))]
+        public async Task<IHttpActionResult> DeleteProject(int id)
         {
-            Publication publication = await db.Publications.FindAsync(id);
-            if (publication == null)
+            Project project = await db.Projects.FindAsync(id);
+            if (project == null)
             {
                 return NotFound();
             }
 
-            db.Publications.Remove(publication);
+            db.Projects.Remove(project);
             await db.SaveChangesAsync();
 
-            return Ok(publication);
+            return Ok(project);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace VesApp.API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PublicationExists(int id)
+        private bool ProjectExists(int id)
         {
-            return db.Publications.Count(e => e.IdPublicacion == id) > 0;
+            return db.Projects.Count(e => e.IdProject == id) > 0;
         }
     }
 }

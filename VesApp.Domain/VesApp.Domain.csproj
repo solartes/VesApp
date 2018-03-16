@@ -48,8 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
+    <Compile Include="Donation.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="Predication.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Publication.cs" />
+    <Compile Include="Reflexion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

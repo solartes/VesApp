@@ -6,8 +6,8 @@ using VesApp.Domain;
 
 namespace VesApp.Backend.Models
 {
-    public class DateContextLocal : DataContext
+    public class DataContextLocal:DataContext
     {
-        public System.Data.Entity.DbSet<VesApp.Domain.Publication> Publications { get; set; }
+
     }
 }

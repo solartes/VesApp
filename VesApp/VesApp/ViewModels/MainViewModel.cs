@@ -12,7 +12,7 @@ namespace VesApp.ViewModels
         #endregion
 
         #region ViewModels
-        public ReflexionViewModel Reflexion
+        public ReflexionViewModel ReflexionViewModel
         {
             get;
             set;
@@ -25,7 +25,7 @@ namespace VesApp.ViewModels
         public MainViewModel()
         {
             instance = this;            
-            this.Reflexion = new ReflexionViewModel();
+            this.ReflexionViewModel = new ReflexionViewModel();
             this.LoadMenu();
         }
 

@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 
 namespace VesApp.Domain
 {
-    public class DataContext:DbContext
+    public class DataContext : DbContext
     {
-        public DataContext(): base("DefaultConnection")
+        public DataContext() : base("DefaultConnection")
         {
 
         }
 
-        public System.Data.Entity.DbSet<VesApp.Domain.Publication> Publications { get; set; }
+        public System.Data.Entity.DbSet<VesApp.Domain.Reflexion> Reflexions { get; set; }
+
+        public System.Data.Entity.DbSet<VesApp.Domain.Predication> Predications { get; set; }
+
+        public System.Data.Entity.DbSet<VesApp.Domain.Project> Projects { get; set; }
+
+        public System.Data.Entity.DbSet<VesApp.Domain.Event> Events { get; set; }
+
+        public System.Data.Entity.DbSet<VesApp.Domain.Donation> Donations { get; set; }
     }
 }

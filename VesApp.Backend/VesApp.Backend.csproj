@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BC87E853-800B-4FED-9895-6FC0D6AE054C}</ProjectGuid>
+    <ProjectGuid>{CF91163E-95B9-4E7E-B834-2D7D756F9F74}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -190,14 +190,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PublicationsController.cs" />
+    <Compile Include="Controllers\PredicationsController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\ReflexionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DateContextLocal.cs" />
+    <Compile Include="Models\DataContextLocal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -261,11 +264,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Publications\Create.cshtml" />
-    <Content Include="Views\Publications\Delete.cshtml" />
-    <Content Include="Views\Publications\Details.cshtml" />
-    <Content Include="Views\Publications\Edit.cshtml" />
-    <Content Include="Views\Publications\Index.cshtml" />
+    <Content Include="Views\Reflexions\Create.cshtml" />
+    <Content Include="Views\Reflexions\Delete.cshtml" />
+    <Content Include="Views\Reflexions\Details.cshtml" />
+    <Content Include="Views\Reflexions\Edit.cshtml" />
+    <Content Include="Views\Reflexions\Index.cshtml" />
+    <Content Include="Views\Predications\Create.cshtml" />
+    <Content Include="Views\Predications\Delete.cshtml" />
+    <Content Include="Views\Predications\Details.cshtml" />
+    <Content Include="Views\Predications\Edit.cshtml" />
+    <Content Include="Views\Predications\Index.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Delete.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,7 +323,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58075</DevelopmentServerPort>
+          <DevelopmentServerPort>55660</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:58075/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

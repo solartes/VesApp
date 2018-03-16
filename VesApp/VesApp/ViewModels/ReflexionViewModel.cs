@@ -16,20 +16,20 @@ namespace VesApp.ViewModels
         #endregion
 
         #region Attributes
-        private ObservableCollection<Publication> publications;
+        private ObservableCollection<Reflexion> reflexions;
         #endregion
 
         #region Properties
-        public ObservableCollection<Publication> Publications
+        public ObservableCollection<Reflexion> Reflexions
         {
             get
             {
-                return this.publications;
+                return this.reflexions;
             }
 
             set
             {
-                SetValue(ref this.publications, value);
+                SetValue(ref this.reflexions, value);
             }
         }
         #endregion
@@ -45,10 +45,10 @@ namespace VesApp.ViewModels
         #region Methods
         private async void LoadPublications()
         {
-            var response = await this.apiService.GetList<Publication>(
+            var response = await this.apiService.GetList<Reflexion>(
                 "http://vesappapi.azurewebsites.net",
                 "/api",
-                "/Publications");
+                "/Reflexions");
 
             if (!response.IsSuccess)
             {
@@ -56,8 +56,8 @@ namespace VesApp.ViewModels
                 return;
             }
 
-            var list = (List<Publication>)response.Result;
-            this.Publications = new ObservableCollection<Publication>(list);
+            var list = (List<Reflexion>)response.Result;
+            this.Reflexions = new ObservableCollection<Reflexion>(list);
             
         }    
         #endregion

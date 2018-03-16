@@ -5,7 +5,7 @@ using System.Text;
 
 namespace VesApp.Models
 {
-    public class Publication
+    public class Reflexion
     {        
         public int IdPublicacion { get; set; }    
         public string UrlVideo { get; set; }        

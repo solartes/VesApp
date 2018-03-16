@@ -1,4 +1,4 @@
-﻿@model IEnumerable<VesApp.Domain.Publication>
+﻿@model IEnumerable<VesApp.Domain.Reflexion>
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UrlVideo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UrlImagen)
+            @Html.DisplayNameFor(model => model.Titulo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Text)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Titulo)
+            @Html.DisplayNameFor(model => model.UrlVideo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrlImagen)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fecha)
@@ -35,16 +35,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UrlVideo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UrlImagen)
+            @Html.DisplayFor(modelItem => item.Titulo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Text)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
+            @Html.DisplayFor(modelItem => item.UrlVideo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrlImagen)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)
@@ -53,9 +53,9 @@
             @Html.DisplayFor(modelItem => item.Sacerdote)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdPublicacion }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdPublicacion }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdPublicacion })
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdReflexion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdReflexion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdReflexion })
         </td>
     </tr>
 }
