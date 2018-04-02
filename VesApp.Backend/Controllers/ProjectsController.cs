@@ -52,6 +52,14 @@ namespace VesApp.Backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (project.UrlImagen == null)
+                {
+                    string urlVideo = project.UrlVideo;
+                    int index = urlVideo.LastIndexOf('/');
+                    String idVideo = urlVideo.Substring(index + 1);
+                    String urlImagen = "https://img.youtube.com/vi/" + idVideo + "/sddefault.jpg";
+                    project.UrlImagen = urlImagen;
+                }
                 db.Projects.Add(project);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

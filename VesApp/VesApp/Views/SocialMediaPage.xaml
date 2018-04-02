@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VesApp.Views.SocialMediaPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Siguenos en..."/>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="ic_instagram.png"/>
+                <Image Source="facebook.png"/>
+            </StackLayout>
+            <Label Text="Contactenos en..."/>
+            <StackLayout>
+                <Image Source="telefono.png"/>
+                <Image Source="casa.png"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -10,13 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace VesApp.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MasterPage : MasterDetailPage
+	public partial class PetitionPage : ContentPage
 	{
-		public MasterPage ()
+		public PetitionPage ()
 		{
 			InitializeComponent ();
-            App.Navigator = Navigator;
-            App.Master = this;
 		}
 	}
 }

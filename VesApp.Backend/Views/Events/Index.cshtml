@@ -20,6 +20,15 @@
         <th>
             @Html.DisplayNameFor(model => model.FechaEvento)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnlaceOnline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnlaceInscripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lugar)
+        </th>
         <th></th>
     </tr>
 
@@ -33,6 +42,15 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FechaEvento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnlaceOnline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnlaceInscripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lugar)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdEvent }) |

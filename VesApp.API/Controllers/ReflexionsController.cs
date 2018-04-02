@@ -20,7 +20,7 @@ namespace VesApp.API.Controllers
         // GET: api/Reflexions
         public IQueryable<Reflexion> GetReflexions()
         {
-            return db.Reflexions;
+            return db.Reflexions.OrderByDescending(reflexion => reflexion.Fecha).Take(14);
         }
 
         // GET: api/Reflexions/5

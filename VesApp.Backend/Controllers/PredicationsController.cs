@@ -19,7 +19,7 @@ namespace VesApp.Backend.Controllers
         // GET: Predications
         public async Task<ActionResult> Index()
         {
-            return View(await db.Predications.ToListAsync());
+            return View(await db.Predications.OrderByDescending(predication => predication.Fecha).ToListAsync());
         }
 
         // GET: Predications/Details/5
@@ -52,11 +52,18 @@ namespace VesApp.Backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (predication.UrlImagen == null)
+                {
+                    string urlVideo = predication.UrlVideo;
+                    int index = urlVideo.LastIndexOf('/');
+                    String idVideo = urlVideo.Substring(index + 1);
+                    String urlImagen = "https://img.youtube.com/vi/" + idVideo + "/sddefault.jpg";
+                    predication.UrlImagen = urlImagen;
+                }
                 db.Predications.Add(predication);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
-            }
-
+            }            
             return View(predication);
         }
 

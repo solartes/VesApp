@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VesApp.Views.EventPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="#efefef"
+             Title="Eventos">
+    <ContentPage.Content>
+        <StackLayout 
+            BindingContext="{Binding PublicationViewModel}"
+            Padding="5">
+            <ListView
+                BackgroundColor="#efefef"
+                HasUnevenRows="true"                 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Events}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshEventsCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame                                
+                                HasShadow="true"
+                                Margin="8"                                
+                                Padding="10,10,10,10">
+                                <StackLayout  Orientation="Horizontal"
+                                              Spacing="30">
+                                    <StackLayout>
+                                        <Label  FontAttributes="Bold"
+                                                FontSize="Large" 
+                                                Text="{Binding FechaEvento,StringFormat='{0:MMMM}'}"
+                                                TextColor="#1a81c5"/>
+                                        <Label  HorizontalOptions="Center"
+                                                FontAttributes="Bold"
+                                                FontSize="30" 
+                                                Text="{Binding FechaEvento,StringFormat='{0:dd}'}"
+                                                TextColor="#1a81c5"/>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label Text="{Binding Titulo}"
+                                               TextColor="Black"></Label>
+                                        <Label Text="{Binding FechaEvento,StringFormat='{0:dddd, dd MMMM, yyyy}'}"
+                                               TextColor="Black"></Label>
+                                        <Label Text="{Binding Lugar}"
+                                               TextColor="Black"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

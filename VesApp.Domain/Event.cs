@@ -19,7 +19,8 @@ namespace VesApp.Domain
         [DataType(DataType.Date)]
         [Index("Publication_Fecha_Index")]
         public DateTime FechaEvento { get; set; }
-        public string EnlaceOnline;
-        public string EnlaceInscripcion;
+        public string EnlaceOnline { get; set; }
+        public string EnlaceInscripcion { get; set; }
+        public string Lugar { get; set; }
     }
 }

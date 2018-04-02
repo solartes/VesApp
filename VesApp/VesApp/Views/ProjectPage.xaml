@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VesApp.Views.ReflexionPage"
+             x:Class="VesApp.Views.ProjectPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="#efefef"
-             Title="Reflexiones">
-
+             Title="Proyectos">
     <ContentPage.Content>
         <StackLayout 
             BindingContext="{Binding PublicationViewModel}"
@@ -15,9 +14,9 @@
                 HasUnevenRows="true"                 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Reflexions}"
+                ItemsSource="{Binding Projects}"
                 SeparatorVisibility="None"
-                RefreshCommand="{Binding RefreshReflexionsCommand}">
+                RefreshCommand="{Binding RefreshPredicationsCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,31 +25,20 @@
                                 Margin="8"                                
                                 Padding="10,10,10,-25">
                                 <StackLayout Spacing="10">
-                                    <Label  FontAttributes="Bold"
+                                    <Label  HorizontalOptions="Center"
+                                            FontAttributes="Bold"
                                             FontSize="Medium" 
                                             Text="{Binding Titulo}"
                                             TextColor="#1a81c5"/>
-                                    <StackLayout>
-                                        <Grid>
-                                            <StackLayout Grid.Column="0">
-                                                <Image VerticalOptions="Start"
-                                                       Source="{Binding UrlImagen}"/>
-                                                <StackLayout Orientation="Horizontal"
-                                                             VerticalOptions="Center">
-                                                    <Image HeightRequest="20"
-                                                           WidthRequest="20"
-                                                           Source="ic_calendar.png"/>
-                                                    <Label Text="{Binding Fecha,StringFormat='{0:dd/MM/yyyy}'}"/>
-                                                </StackLayout>
-                                            </StackLayout>
-                                            
-                                            <Label  Grid.Column="1"
+
+                                    <Image HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Source="{Binding UrlImagen}"/>
+                                    
+                                    <Label 
                                                         FontSize="Default" 
                                                         Text="{Binding Text}"
                                                         TextColor="Black"/>
-                                            
-                                        </Grid>
-                                    </StackLayout>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>

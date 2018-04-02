@@ -27,16 +27,41 @@ namespace VesApp.ViewModels
 
         private void Navigate()
         {
+            App.Master.IsPresented = false;
             if (this.PageName == "ReflexionPage")
             {
-                Console.WriteLine("Reflexion");
+                MainViewModel.GetInstance().PublicationViewModel.LoadReflexions();
+                App.Navigator.PushAsync(new ReflexionPage());
             }
             if (this.PageName == "PredicationPage")
             {
-                //MainViewModel.GetInstance.Clase= new clase();
-                //Application.Current.MainPage = new PredicationPage();
-                //Application.Current.MainPage.Navigation.PushAsync(new PredicationPage());
-                App.Navigator.PushAsync(new PredicationPage());
+                MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
+                App.Navigator.PushAsync(new PredicationPage());             
+            }
+            if (this.PageName == "ProjectPage")
+            {
+                MainViewModel.GetInstance().PublicationViewModel.LoadProjects();
+                App.Navigator.PushAsync(new ProjectPage());
+            }
+            if (this.PageName == "EventPage")
+            {
+                MainViewModel.GetInstance().PublicationViewModel.LoadEvents();
+                App.Navigator.PushAsync(new EventPage());
+            }
+            if (this.PageName == "SocialMediaPage")
+            {
+                //MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
+                App.Navigator.PushAsync(new SocialMediaPage());
+            }
+            if (this.PageName == "PetitionPage")
+            {
+                //MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
+                App.Navigator.PushAsync(new PetitionPage());
+            }
+            if (this.PageName == "ContactPage")
+            {
+                //MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
+                App.Navigator.PushAsync(new ContactPage());
             }
         }
         #endregion

@@ -20,7 +20,7 @@ namespace VesApp.API.Controllers
         // GET: api/Predications
         public IQueryable<Predication> GetPredications()
         {
-            return db.Predications;
+            return db.Predications.OrderByDescending(predication => predication.Fecha).Take(14);
         }
 
         // GET: api/Predications/5

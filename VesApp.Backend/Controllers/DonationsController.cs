@@ -12,107 +12,107 @@ using VesApp.Domain;
 
 namespace VesApp.Backend.Controllers
 {
-    public class EventsController : Controller
+    public class DonationsController : Controller
     {
         private DataContextLocal db = new DataContextLocal();
 
-        // GET: Events
+        // GET: Donations
         public async Task<ActionResult> Index()
         {
-            return View(await db.Events.ToListAsync());
+            return View(await db.Donations.ToListAsync());
         }
 
-        // GET: Events/Details/5
+        // GET: Donations/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = await db.Events.FindAsync(id);
-            if (@event == null)
+            Donation donation = await db.Donations.FindAsync(id);
+            if (donation == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View(donation);
         }
 
-        // GET: Events/Create
+        // GET: Donations/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Events/Create
+        // POST: Donations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdEvent,Titulo,Text,FechaEvento,EnlaceOnline,EnlaceInscripcion,Lugar")] Event @event)
+        public async Task<ActionResult> Create([Bind(Include = "IdDonation,Text,UrlDireccion,UrlImagen")] Donation donation)
         {
             if (ModelState.IsValid)
             {
-                db.Events.Add(@event);
+                db.Donations.Add(donation);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(@event);
+            return View(donation);
         }
 
-        // GET: Events/Edit/5
+        // GET: Donations/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = await db.Events.FindAsync(id);
-            if (@event == null)
+            Donation donation = await db.Donations.FindAsync(id);
+            if (donation == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View(donation);
         }
 
-        // POST: Events/Edit/5
+        // POST: Donations/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdEvent,Titulo,Text,FechaEvento,EnlaceOnline,EnlaceInscripcion,Lugar")] Event @event)
+        public async Task<ActionResult> Edit([Bind(Include = "IdDonation,Text,UrlDireccion,UrlImagen")] Donation donation)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(@event).State = EntityState.Modified;
+                db.Entry(donation).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(@event);
+            return View(donation);
         }
 
-        // GET: Events/Delete/5
+        // GET: Donations/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = await db.Events.FindAsync(id);
-            if (@event == null)
+            Donation donation = await db.Donations.FindAsync(id);
+            if (donation == null)
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View(donation);
         }
 
-        // POST: Events/Delete/5
+        // POST: Donations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Event @event = await db.Events.FindAsync(id);
-            db.Events.Remove(@event);
+            Donation donation = await db.Donations.FindAsync(id);
+            db.Donations.Remove(donation);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

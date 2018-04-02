@@ -3,10 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VesApp.Views.PredicationPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="#efefef"
              Title="Predicaciones">
+    
     <ContentPage.Content>
-        <StackLayout >
-            <Label Text="To Do Predications"></Label>
+        <StackLayout 
+            BindingContext="{Binding PublicationViewModel}"
+            Padding="5">
+            <ListView
+                BackgroundColor="#efefef"
+                HasUnevenRows="true"                 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Predications}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshPredicationsCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame                                
+                                HasShadow="true"
+                                Margin="8"                                
+                                Padding="10,10,10,-25">
+                                <StackLayout Spacing="10">
+                                    <Label  FontAttributes="Bold"
+                                            FontSize="Medium" 
+                                            Text="{Binding Titulo}"
+                                            TextColor="#1a81c5"/>
+                                    <StackLayout>
+                                        <Grid>
+                                            <StackLayout Grid.Column="0">
+                                                <Image VerticalOptions="Start"
+                                                       Source="{Binding UrlImagen}"/>
+                                                <StackLayout Orientation="Horizontal"
+                                                             VerticalOptions="Center">
+                                                    <Image HeightRequest="20"
+                                                           WidthRequest="20"
+                                                           Source="ic_calendar.png"/>
+                                                    <Label Text="{Binding Fecha,StringFormat='{0:dd/MM/yyyy}'}"/>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                            <Label  Grid.Column="1"
+                                                        FontSize="Default" 
+                                                        Text="{Binding Text}"
+                                                        TextColor="Black"/>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

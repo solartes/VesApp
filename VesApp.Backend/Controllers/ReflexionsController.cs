@@ -18,8 +18,8 @@ namespace VesApp.Backend.Controllers
 
         // GET: Reflexions
         public async Task<ActionResult> Index()
-        {
-            return View(await db.Reflexions.ToListAsync());
+        {            
+            return View(await db.Reflexions.OrderByDescending(reflexion => reflexion.Fecha).ToListAsync());
         }
 
         // GET: Reflexions/Details/5
@@ -52,6 +52,14 @@ namespace VesApp.Backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (reflexion.UrlImagen==null)
+                {
+                    string urlVideo = reflexion.UrlVideo;
+                    int index = urlVideo.LastIndexOf('/');
+                    String idVideo = urlVideo.Substring(index + 1);
+                    String urlImagen = "https://img.youtube.com/vi/" + idVideo + "/sddefault.jpg";
+                    reflexion.UrlImagen = urlImagen;
+                }
                 db.Reflexions.Add(reflexion);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

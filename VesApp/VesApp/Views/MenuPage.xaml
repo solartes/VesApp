@@ -5,17 +5,15 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Titulo">
     <ContentPage.Content>
-        <StackLayout>
-            
+        <StackLayout Spacing="5">
             <Image Source="logo.jpg"
                    WidthRequest="600"/>
-            <ListView            
-                    ItemsSource="{Binding Menus}"
-                    HasUnevenRows="True">
+            <ListView ItemsSource="{Binding Menus}"
+                      HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid Margin="5">
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NavigateCommand}"/>
                                 </Grid.GestureRecognizers>

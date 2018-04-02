@@ -12,7 +12,7 @@ namespace VesApp.ViewModels
         #endregion
 
         #region ViewModels
-        public ReflexionViewModel ReflexionViewModel
+        public PublicationViewModel PublicationViewModel
         {
             get;
             set;
@@ -25,7 +25,7 @@ namespace VesApp.ViewModels
         public MainViewModel()
         {
             instance = this;            
-            this.ReflexionViewModel = new ReflexionViewModel();
+            this.PublicationViewModel = new PublicationViewModel();
             this.LoadMenu();
         }
 
@@ -36,13 +36,13 @@ namespace VesApp.ViewModels
         {
             this.Menus = new ObservableCollection<MenuItemViewModel>
             {
-                new MenuItemViewModel
+                /*new MenuItemViewModel
                 {
                     Icon = "reflexion.png",
                     PageName = "ReflexionPage",
                     Title = "Reflexión del evangelio",
 
-                },
+                },*/
                 new MenuItemViewModel
                 {
                     Icon = "predicaciones.png",
@@ -53,35 +53,35 @@ namespace VesApp.ViewModels
                 new MenuItemViewModel
                 {
                     Icon = "proyectos.png",
-                    PageName = "ProyectoPage",
+                    PageName = "ProjectPage",
                     Title = "Proyectos Sociales",
 
                 },
                 new MenuItemViewModel
                 {
                     Icon = "evento.png",
-                    PageName = "ProyectoPage",
+                    PageName = "EventPage",
                     Title = "Eventos",
 
                 },
                 new MenuItemViewModel
                 {
                     Icon = "redes.png",
-                    PageName = "ProyectoPage",
+                    PageName = "SocialMediaPage",
                     Title = "Redes Sociales",
 
                 },
                 new MenuItemViewModel
                 {
                     Icon = "peticiones.png",
-                    PageName = "ProyectoPage",
+                    PageName = "PetitionPage",
                     Title = "Peticiones",
 
                 },
                 new MenuItemViewModel
                 {
                     Icon = "contactenos.png",
-                    PageName = "ProyectoPage",
+                    PageName = "ContactPage",
                     Title = "Contactenos",
 
                 }
