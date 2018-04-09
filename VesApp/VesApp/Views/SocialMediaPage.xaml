@@ -1,18 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VesApp.Views.SocialMediaPage">
+             x:Class="VesApp.Views.SocialMediaPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"             
+             Title="Reflexiones">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Siguenos en..."/>
-            <StackLayout Orientation="Horizontal">
-                <Image Source="ic_instagram.png"/>
-                <Image Source="facebook.png"/>
+        <StackLayout BindingContext="{Binding ImageViewModel}">
+            <Label TextColor="#5b5555" FontAttributes="Bold" FontSize="Large" Text="Siguenos en..."/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Image Source="ic_instagram.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectCategoryCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="ic_facebook.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectCategoryCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
-            <Label Text="Contactenos en..."/>
-            <StackLayout>
-                <Image Source="telefono.png"/>
-                <Image Source="casa.png"/>
+            <Label TextColor="#5b5555" FontAttributes="Bold" FontSize="Large" Text="Contactanos..."/>
+            <StackLayout HorizontalOptions="Start">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="ic_telefono.png"/>
+                    <Label FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Holaaaaaa"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="ic_casa.png"/>
+                    <Label FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Holaaaaaa2"/>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

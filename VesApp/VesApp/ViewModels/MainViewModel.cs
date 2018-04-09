@@ -18,7 +18,11 @@ namespace VesApp.ViewModels
             set;
         }
 
-   
+        public ImageViewModel ImageViewModel
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors

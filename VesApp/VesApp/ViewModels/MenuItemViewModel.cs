@@ -50,7 +50,7 @@ namespace VesApp.ViewModels
             }
             if (this.PageName == "SocialMediaPage")
             {
-                //MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
+                MainViewModel.GetInstance().ImageViewModel = new ImageViewModel();
                 App.Navigator.PushAsync(new SocialMediaPage());
             }
             if (this.PageName == "PetitionPage")
