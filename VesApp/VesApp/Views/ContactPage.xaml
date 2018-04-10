@@ -3,10 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VesApp.Views.ContactPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="10,20,10,10">
+                <Label Text="Nombre:"/>
+                <Entry Placeholder="Introduce tu nombre"/>
+                <Label Text="Correo:"/>
+                <Entry Placeholder="Introduce tu correo"/>
+                <Label Text="Celular:"/>
+                <Entry Placeholder="Introduce tu celular"/>
+                <Label Text="Asunto:"/>
+                <Entry />
+                <Label Text="Mensaje:"/>
+                <StackLayout>
+                    <StackLayout.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <OnPlatform.iOS>White</OnPlatform.iOS>
+                            <OnPlatform.Android>Transparent</OnPlatform.Android>
+                        </OnPlatform>
+                    </StackLayout.BackgroundColor>
+                    <StackLayout Padding="1">
+                        <StackLayout.BackgroundColor>
+                            <OnPlatform x:TypeArguments="Color">
+                                <OnPlatform.iOS>#e9e9e9</OnPlatform.iOS>
+                                <OnPlatform.Android>Transparent</OnPlatform.Android>
+                            </OnPlatform>
+                        </StackLayout.BackgroundColor>
+                        <Editor HeightRequest="150">
+                            <Editor.BackgroundColor>
+                                <OnPlatform x:TypeArguments="Color">
+                                    <OnPlatform.iOS>White</OnPlatform.iOS>
+                                    <OnPlatform.Android>Transparent</OnPlatform.Android>
+                                </OnPlatform>
+                            </Editor.BackgroundColor>
+                        </Editor>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Padding="110,25,110,110">
+                    <Button BackgroundColor="Transparent" BorderWidth="1" BorderColor="#e9e9e9" Text="Enviar"></Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

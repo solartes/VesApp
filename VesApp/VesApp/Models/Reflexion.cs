@@ -1,4 +1,8 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
+using System.Windows.Input;
+using VesApp.ViewModels;
+using VesApp.Views;
 
 namespace VesApp.Models
 {
@@ -11,5 +15,22 @@ namespace VesApp.Models
         public string Titulo { get; set; }        
         public DateTime Fecha { get; set; }        
         public string Sacerdote { get; set; }
+
+        #region Commands
+        public ICommand SelectReflexionCommand
+        {
+            get
+            {
+                return new RelayCommand(SelectReflexionAsync);
+            }
+        }
+
+        async void SelectReflexionAsync()
+        {
+            MainViewModel.GetInstance().DetailViewModel = new DetailViewModel(reflexion: this);
+            await App.Navigator.PushAsync(new DetailReflexionPage());
+            //Enviar this a el otro viewmodel
+        }
+        #endregion
     }
 }

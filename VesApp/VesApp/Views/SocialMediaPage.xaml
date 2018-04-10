@@ -10,12 +10,16 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Image Source="ic_instagram.png">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SelectCategoryCommand}"/>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenBrowser}"
+                            CommandParameter="Instagram" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="ic_facebook.png">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SelectCategoryCommand}"/>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenBrowser}"
+                            CommandParameter="Facebook" />
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>

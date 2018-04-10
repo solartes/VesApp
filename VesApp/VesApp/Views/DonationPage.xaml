@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VesApp.Views.DonationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="ic_paypal"></Image>
+            <Image Source="ic_bancolombia"></Image>
+            <Label Text="Cuenta ##########"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

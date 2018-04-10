@@ -22,8 +22,13 @@
                         <ViewCell>
                             <Frame                                
                                 HasShadow="true"
-                                Margin="8"                                
-                                Padding="10,10,10,10">
+                                Margin="8">
+                                <Frame.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android" Value="10,10,10,10"/>
+                                        <On Platform="iOS" Value="10,10,10,25"/>
+                                    </OnPlatform>
+                                </Frame.Padding>
                                 <StackLayout  Orientation="Horizontal"
                                               Spacing="30">
                                     <StackLayout>

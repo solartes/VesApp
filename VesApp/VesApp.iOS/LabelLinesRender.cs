@@ -15,7 +15,7 @@ namespace VesApp.iOS
             if (Control != null)
             {
                 UILabel label = Control;
-                label.Lines = 2;
+                label.Lines = 7;
             }
         }
     }

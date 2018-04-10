@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VesApp.Views.DetailReflexionPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid   BindingContext="{Binding DetailViewModel}"  
+                    VerticalOptions="Start">
+                <Image VerticalOptions="FillAndExpand"
+                       Source="{Binding Reflexion.UrlImagen}"
+                       Aspect="AspectFill"                    
+                    />
+                <Image HorizontalOptions="Center"
+                       Source="ic_play2.png"/>
+            </Grid>
+            <StackLayout BackgroundColor="AliceBlue">
+                <Label Text="asdasd"/>
+            </StackLayout>
+            <Label Text="asdasd"/>
+        </StackLayout>            
+    </ContentPage.Content>
+</ContentPage>

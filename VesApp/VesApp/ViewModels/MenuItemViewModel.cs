@@ -21,47 +21,47 @@ namespace VesApp.ViewModels
         {
             get
             {
-                return new RelayCommand(Navigate);
+                return new RelayCommand(NavigateAsync);
             }
         }
 
-        private void Navigate()
+        private async void NavigateAsync()
         {
             App.Master.IsPresented = false;
             if (this.PageName == "ReflexionPage")
             {
                 MainViewModel.GetInstance().PublicationViewModel.LoadReflexions();
-                App.Navigator.PushAsync(new ReflexionPage());
+                await App.Navigator.PushAsync(new ReflexionPage());
             }
             if (this.PageName == "PredicationPage")
             {
                 MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
-                App.Navigator.PushAsync(new PredicationPage());             
+                await App.Navigator.PushAsync(new PredicationPage());             
             }
             if (this.PageName == "ProjectPage")
             {
                 MainViewModel.GetInstance().PublicationViewModel.LoadProjects();
-                App.Navigator.PushAsync(new ProjectPage());
+                await App.Navigator.PushAsync(new ProjectPage());
             }
             if (this.PageName == "EventPage")
             {
                 MainViewModel.GetInstance().PublicationViewModel.LoadEvents();
-                App.Navigator.PushAsync(new EventPage());
+                await App.Navigator.PushAsync(new EventPage());
             }
             if (this.PageName == "SocialMediaPage")
             {
                 MainViewModel.GetInstance().ImageViewModel = new ImageViewModel();
-                App.Navigator.PushAsync(new SocialMediaPage());
+                await App.Navigator.PushAsync(new SocialMediaPage());
             }
             if (this.PageName == "PetitionPage")
             {
                 //MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
-                App.Navigator.PushAsync(new PetitionPage());
+                await App.Navigator.PushAsync(new PetitionPage());
             }
             if (this.PageName == "ContactPage")
             {
                 //MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
-                App.Navigator.PushAsync(new ContactPage());
+                await App.Navigator.PushAsync(new ContactPage());
             }
         }
         #endregion

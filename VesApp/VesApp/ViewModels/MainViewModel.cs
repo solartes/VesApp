@@ -12,6 +12,12 @@ namespace VesApp.ViewModels
         #endregion
 
         #region ViewModels
+        public DetailViewModel DetailViewModel
+        {
+            get;
+            set;
+        }
+
         public PublicationViewModel PublicationViewModel
         {
             get;
