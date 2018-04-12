@@ -57,7 +57,7 @@ namespace VesApp.Backend.Controllers
                     string urlVideo = predication.UrlVideo;
                     int index = urlVideo.LastIndexOf('/');
                     String idVideo = urlVideo.Substring(index + 1);
-                    String urlImagen = "https://img.youtube.com/vi/" + idVideo + "/sddefault.jpg";
+                    String urlImagen = "https://img.youtube.com/vi/" + idVideo + "/0.jpg";
                     predication.UrlImagen = urlImagen;
                 }
                 db.Predications.Add(predication);

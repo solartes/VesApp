@@ -1,12 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VesApp.Views.DetailProjectPage">
+             x:Class="VesApp.Views.DetailProjectPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{Binding DetailViewModel.Project.Titulo}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout BindingContext="{Binding DetailViewModel}"  >
+                <Grid VerticalOptions="Start">
+
+                    <Image VerticalOptions="FillAndExpand"
+                           Source="{Binding Project.UrlImagen}"
+                           Aspect="AspectFill"/>
+
+                    <Image HorizontalOptions="Center"
+                           Source="ic_play2.png"/>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Project.OpenLinkCommand}"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Label Margin="5" TextColor="Black" FontSize="Medium" Text="{Binding Project.Text}"/>
+                <Image Source="ic_donaciones.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DonarCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

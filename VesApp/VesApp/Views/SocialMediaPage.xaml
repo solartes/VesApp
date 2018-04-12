@@ -27,11 +27,11 @@
             <StackLayout HorizontalOptions="Start">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="ic_telefono.png"/>
-                    <Label FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Holaaaaaa"/>
+                    <Label FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="3012655977 / 3116199472 / (5)4371390"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image Source="ic_casa.png"/>
-                    <Label FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Holaaaaaa2"/>
+                    <Label FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center" Text="Cra 21 No 22-44 Santa Marta (Colombia)"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

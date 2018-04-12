@@ -2,11 +2,12 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using VesApp.iOS;
+using VesApp.CustomRender;
 
-[assembly: ExportRenderer(typeof(Label), typeof(LabelLinesRender))]
+[assembly: ExportRenderer(typeof(ShortLabel2), typeof(ShortLabelRender2))]
 namespace VesApp.iOS
 {
-    public class LabelLinesRender : LabelRenderer
+    public class ShortLabelRender2 : LabelRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
@@ -15,7 +16,7 @@ namespace VesApp.iOS
             if (Control != null)
             {
                 UILabel label = Control;
-                label.Lines = 7;
+                label.Lines = 5;
             }
         }
     }

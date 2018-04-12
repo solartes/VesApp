@@ -2,10 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VesApp.Views.DetailPredicationPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{Binding DetailViewModel.Predication.Titulo}">
     <ContentPage.Content>
-        <StackLayout BindingContext="{Binding DetailViewModel}">
-            <Label Text="{Binding Texto}"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout BindingContext="{Binding DetailViewModel}"  >
+                <Grid VerticalOptions="Start">
+
+                    <Image VerticalOptions="FillAndExpand"
+                           Source="{Binding Predication.UrlImagen}"
+                           Aspect="AspectFill"/>
+
+                    <Image HorizontalOptions="Center"
+                           Source="ic_play2.png"/>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Predication.OpenLinkCommand}"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <StackLayout Orientation="Horizontal" BackgroundColor="#f2f2f2" Padding="15,7,15,7">
+                    <Label HorizontalOptions="StartAndExpand" Text="{Binding Predication.Sacerdote}"/>
+                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                        <Image HeightRequest="20" WidthRequest="20" Source="ic_calendar.png"/>
+                        <Label Text="{Binding Predication.Fecha,StringFormat='{0:dd/MM/yyyy}'}"/>
+                    </StackLayout>
+                </StackLayout>
+                <Label Margin="5" TextColor="Black" FontSize="Medium" Text="{Binding Predication.Text}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

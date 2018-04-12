@@ -1,7 +1,10 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using VesApp.Models;
+using Xamarin.Forms;
 
 namespace VesApp.ViewModels
 {
@@ -9,6 +12,8 @@ namespace VesApp.ViewModels
     {
         public Predication Predication { get; set; }
         public Reflexion Reflexion { get; set; }
+        public Project Project { get; set; }
+        public Event Evento { get; set; }
 
         public DetailViewModel(Reflexion reflexion)
         {
@@ -18,6 +23,29 @@ namespace VesApp.ViewModels
         public DetailViewModel(Predication predication)
         {
             Predication = predication;
+        }
+
+        public DetailViewModel(Project project)
+        {
+            Project = project;
+        }
+
+        public DetailViewModel(Event evento)
+        {
+            Evento = evento;
+        }
+
+        public ICommand DonarCommand
+        {
+            get
+            {
+                return new RelayCommand(Donar);
+            }
+        }
+
+        void Donar()
+        {
+            Device.OpenUri(new Uri("https://www.paypal.me/valorart"));
         }
     }
 }

@@ -48,7 +48,7 @@ namespace VesApp.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdEvent,Titulo,Text,FechaEvento,EnlaceOnline,EnlaceInscripcion,Lugar")] Event @event)
+        public async Task<ActionResult> Create([Bind(Include = "IdEvent,Titulo,Text,FechaEvento,EnlaceOnline,EnlaceInscripcion,Lugar,Hora")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace VesApp.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdEvent,Titulo,Text,FechaEvento,EnlaceOnline,EnlaceInscripcion,Lugar")] Event @event)
+        public async Task<ActionResult> Edit([Bind(Include = "IdEvent,Titulo,Text,FechaEvento,EnlaceOnline,EnlaceInscripcion,Lugar,Hora")] Event @event)
         {
             if (ModelState.IsValid)
             {

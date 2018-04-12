@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VesApp.CustomRender;assembly=VesApp"            
              x:Class="VesApp.Views.ReflexionPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="#efefef"
@@ -26,8 +27,8 @@
                                 Margin="8">
                                 <Frame.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android" Value="10,10,10,-25"/>
-                                        <On Platform="iOS" Value="10,10,10,-75"/>
+                                        <On Platform="Android" Value="10,10,10,10"/>
+                                        <On Platform="iOS" Value="10,10,10,-40"/>
                                     </OnPlatform>
                                 </Frame.Padding>
                                 <Frame.GestureRecognizers>
@@ -51,11 +52,11 @@
                                                     <Label Text="{Binding Fecha,StringFormat='{0:dd/MM/yyyy}'}"/>
                                                 </StackLayout>
                                             </StackLayout>
-                                            
-                                            <Label  Grid.Column="1"
-                                                        FontSize="Default" 
-                                                        Text="{Binding Text}"
-                                                        TextColor="Black"/>
+
+                                            <local:ShortLabel  Grid.Column="1"
+                                                               FontSize="Default" 
+                                                               Text="{Binding Text}"
+                                                               TextColor="Black"/>
                                             
                                         </Grid>
                                     </StackLayout>

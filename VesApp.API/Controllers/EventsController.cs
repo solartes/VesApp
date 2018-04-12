@@ -20,7 +20,7 @@ namespace VesApp.API.Controllers
         // GET: api/Events
         public IQueryable<Event> GetEvents()
         {
-            return db.Events;
+            return db.Events.OrderByDescending(evento => evento.FechaEvento).Take(14);            
         }
 
         // GET: api/Events/5

@@ -22,5 +22,6 @@ namespace VesApp.Domain
         public string EnlaceOnline { get; set; }
         public string EnlaceInscripcion { get; set; }
         public string Lugar { get; set; }
+        public string Hora { get; set; }
     }
 }

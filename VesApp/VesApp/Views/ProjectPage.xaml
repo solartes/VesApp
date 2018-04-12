@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VesApp.CustomRender;assembly=VesApp"            
              x:Class="VesApp.Views.ProjectPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="#efefef"
@@ -9,7 +10,7 @@
         <StackLayout 
             BindingContext="{Binding PublicationViewModel}"
             Padding="5">
-            <ListView
+                <ListView
                 BackgroundColor="#efefef"
                 HasUnevenRows="true"                 
                 IsPullToRefreshEnabled="true"
@@ -17,39 +18,42 @@
                 ItemsSource="{Binding Projects}"
                 SeparatorVisibility="None"
                 RefreshCommand="{Binding RefreshPredicationsCommand}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Frame                                
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame                                
                                 HasShadow="true"
                                 Margin="8">
-                                <Frame.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android" Value="10,10,10,-25"/>
-                                        <On Platform="iOS" Value="10,10,10,0"/>
-                                    </OnPlatform>
-                                </Frame.Padding>
-                                <StackLayout Spacing="10">
-                                    <Label  HorizontalOptions="Center"
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectProjectCommand}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Frame.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="Android" Value="10,10,10,10"/>
+                                            <On Platform="iOS" Value="10,10,10,20"/>
+                                        </OnPlatform>
+                                    </Frame.Padding>
+                                    <StackLayout Spacing="10">
+                                        <Label  HorizontalOptions="Center"
                                             FontAttributes="Bold"
                                             FontSize="Medium" 
                                             Text="{Binding Titulo}"
                                             TextColor="#1a81c5"/>
 
-                                    <Image HorizontalOptions="Center"
+                                        <Image HorizontalOptions="Center"
                                            VerticalOptions="Center"
                                            Source="{Binding UrlImagen}"/>
-                                    
-                                    <Label 
+
+                                        <local:ShortLabel2 
                                                         FontSize="Default" 
                                                         Text="{Binding Text}"
                                                         TextColor="Black"/>
-                                </StackLayout>
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

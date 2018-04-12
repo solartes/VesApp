@@ -1,12 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VesApp.Views.DetailEventPage">
+             x:Class="VesApp.Views.DetailEventPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{Binding DetailViewModel.Evento.Titulo}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <StackLayout BindingContext="{Binding DetailViewModel}" Padding="5">
+            <StackLayout Orientation="Horizontal">
+                <Label  FontSize="Medium"
+                        Text="Evento: "
+                        TextColor="Black"
+                        VerticalOptions="Center"/>
+                <Label  VerticalOptions="Center"
+                        Text="{Binding Evento.Titulo}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label  FontSize="Medium"
+                        Text="Lugar: "
+                        TextColor="Black"
+                        VerticalOptions="Center"/>
+                <Label  VerticalOptions="Center"
+                        Text="{Binding Evento.Lugar}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label  Text="Fecha: "
+                        FontSize="Medium"
+                        TextColor="Black"
+                        VerticalOptions="Center"/>
+                <Label/>
+                <Label  VerticalOptions="Center"
+                        Text="{Binding Evento.FechaEvento,StringFormat='{0:dd/MM/yyyy}'}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label  FontSize="Medium"
+                        Text="Hora: "
+                        TextColor="Black"
+                        VerticalOptions="Center"/>
+                <Label  VerticalOptions="Center"
+                        Text="{Binding Evento.Hora}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label  FontSize="Medium"
+                        Text="Inscripcion en: "
+                        TextColor="Black"
+                        VerticalOptions="Center"/>
+                <Label  VerticalOptions="Center"
+                        Text="{Binding Evento.EnlaceInscripcion}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label  FontSize="Medium"
+                        Text="Evento en vivo en: "
+                        TextColor="Black"
+                        VerticalOptions="Center"/>
+                <Label  VerticalOptions="End"
+                        Text="{Binding Evento.EnlaceOnline}"/>
+            </StackLayout>
+         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

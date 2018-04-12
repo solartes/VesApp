@@ -91,9 +91,10 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="LabelLinesRender.cs" />
+    <Compile Include="ShortLabelRender.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="ShortLabelRender2.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,5 +201,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\contactenos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_donar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_donaciones.png" />
   </ItemGroup>
 </Project>

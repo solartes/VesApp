@@ -1,23 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              x:Class="VesApp.Views.DetailReflexionPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{Binding DetailViewModel.Reflexion.Titulo}">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid   BindingContext="{Binding DetailViewModel}"  
-                    VerticalOptions="Start">
-                <Image VerticalOptions="FillAndExpand"
-                       Source="{Binding Reflexion.UrlImagen}"
-                       Aspect="AspectFill"                    
-                    />
-                <Image HorizontalOptions="Center"
-                       Source="ic_play2.png"/>
-            </Grid>
-            <StackLayout BackgroundColor="AliceBlue">
-                <Label Text="asdasd"/>
-            </StackLayout>
-            <Label Text="asdasd"/>
-        </StackLayout>            
+        <ScrollView>
+            <StackLayout BindingContext="{Binding DetailViewModel}">
+                <Grid VerticalOptions="Start">
+                    <Image VerticalOptions="FillAndExpand"
+                           Source="{Binding Reflexion.UrlImagen}"
+                           Aspect="AspectFill"/>
+                
+                    <Image HorizontalOptions="Center"
+                           Source="ic_play2.png"/>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Reflexion.OpenLinkCommand}"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <StackLayout Orientation="Horizontal" BackgroundColor="#f2f2f2" Padding="15,7,15,7">
+                    <Label HorizontalOptions="StartAndExpand" Text="{Binding Reflexion.Sacerdote}"/>
+                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                        <Image HeightRequest="20" WidthRequest="20" Source="ic_calendar.png"/>
+                        <Label Text="{Binding Reflexion.Fecha,StringFormat='{0:dd/MM/yyyy}'}"/>
+                    </StackLayout>
+                </StackLayout>
+                    <Label Margin="5" TextColor="Black" FontSize="Medium" Text="{Binding Reflexion.Text}"/>
+                </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

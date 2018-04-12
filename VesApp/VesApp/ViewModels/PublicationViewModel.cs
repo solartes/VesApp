@@ -226,6 +226,19 @@ namespace VesApp.ViewModels
         #endregion
 
         #region Commands
+        public ICommand DonarCommand
+        {
+            get
+            {
+                return new RelayCommand(Donar);
+            }
+        }
+
+        void Donar()
+        {
+            Device.OpenUri(new Uri("https://www.paypal.me/valorart"));
+        }
+
         public ICommand RefreshReflexionsCommand
         {
             get

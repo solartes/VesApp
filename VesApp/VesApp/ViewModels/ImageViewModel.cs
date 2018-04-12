@@ -40,7 +40,8 @@ namespace VesApp.ViewModels
                 {
                     Device.OpenUri(new Uri("https://www.instagram.com/valorart_/"));
                 }
-            }
+            }            
+
         }
 
         #endregion
