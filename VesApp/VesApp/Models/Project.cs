@@ -28,6 +28,9 @@ namespace VesApp.Models
 
         async void SelectProject()
         {
+
+            MainViewModel.GetInstance().ImageViewModel = new ImageViewModel();
+            MainViewModel.GetInstance().ImageViewModel.LoadConfig();
             MainViewModel.GetInstance().DetailViewModel = new DetailViewModel(project: this);
             await App.Navigator.PushAsync(new DetailProjectPage());            
         }
@@ -50,7 +53,7 @@ namespace VesApp.Models
                 String video = "watch?v=" + idVideo;
                 Device.OpenUri(new Uri("vnd.youtube://" + video));
             }
-            catch (Exception e)
+            catch
             {
                 Device.OpenUri(new Uri(this.UrlVideo));
             }

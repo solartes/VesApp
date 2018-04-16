@@ -102,17 +102,153 @@ namespace VesApp.ViewModels
         #region Methods
         public async void LoadReflexions()
         {
+            if (Reflexions == null)
+            {
+                this.IsRefreshing = true;
+
+                var connection = await this.apiService.CheckConnection();
+
+                if (!connection.IsSuccess)
+                {
+                    this.IsRefreshing = false;
+                    await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                    return;
+                }
+
+
+                var response = await this.apiService.GetList<Reflexion>(
+                    "http://vesappapi.azurewebsites.net",
+                    "/api",
+                    "/Reflexions");
+
+                if (!response.IsSuccess)
+                {
+                    this.IsRefreshing = false;
+                    await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                    return;
+                }
+
+                var list = (List<Reflexion>)response.Result;
+                this.Reflexions = new ObservableCollection<Reflexion>(list);
+                this.IsRefreshing = false;
+            }
+        }
+
+        public async void LoadPredications()
+        {
+            if (Predications == null)
+            {
+                this.IsRefreshing = true;
+
+                var connection = await this.apiService.CheckConnection();
+
+                if (!connection.IsSuccess)
+                {
+                    this.IsRefreshing = false;
+                    await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                    return;
+                }
+
+
+                var response = await this.apiService.GetList<Predication>(
+                    "http://vesappapi.azurewebsites.net",
+                    "/api",
+                    "/Predications");
+
+                if (!response.IsSuccess)
+                {
+                    this.IsRefreshing = false;
+                    await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                    return;
+                }
+
+                var list = (List<Predication>)response.Result;
+                this.Predications = new ObservableCollection<Predication>(list);
+                this.IsRefreshing = false;
+            }
+        }
+
+        public async void LoadProjects()
+        {
+            if (Projects == null)
+            {
+                this.IsRefreshing = true;
+
+                var connection = await this.apiService.CheckConnection();
+
+                if (!connection.IsSuccess)
+                {
+                    this.IsRefreshing = false;
+                    await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                    return;
+                }
+
+
+                var response = await this.apiService.GetList<Project>(
+                    "http://vesappapi.azurewebsites.net",
+                    "/api",
+                    "/Projects");
+
+                if (!response.IsSuccess)
+                {
+                    this.IsRefreshing = false;
+                    await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                    return;
+                }
+
+                var list = (List<Project>)response.Result;
+                this.Projects = new ObservableCollection<Project>(list);
+                this.IsRefreshing = false;
+            }
+        }
+
+        public async void LoadEvents()
+        {
+            if (Events == null)
+            {
+                this.IsRefreshing = true;
+
+                var connection = await this.apiService.CheckConnection();
+
+                if (!connection.IsSuccess)
+                {
+                    this.IsRefreshing = false;
+                    await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                    return;
+                }
+
+
+                var response = await this.apiService.GetList<Event>(
+                    "http://vesappapi.azurewebsites.net",
+                    "/api",
+                    "/Events");
+
+                if (!response.IsSuccess)
+                {
+                    this.IsRefreshing = false;
+                    await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                    return;
+                }
+
+                var list = (List<Event>)response.Result;
+                this.Events = new ObservableCollection<Event>(list);
+                this.IsRefreshing = false;
+            }
+        }
+
+        public async void LoadRefreshReflexions()
+        {
             this.IsRefreshing = true;
-            /*
+            
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");                
+                await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");                
                 return;
             }
-            */
+            
 
             var response = await this.apiService.GetList<Reflexion>(
                 "http://vesappapi.azurewebsites.net",
@@ -122,7 +258,7 @@ namespace VesApp.ViewModels
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error",response.Message,"Aceptar");
+                await App.Current.MainPage.DisplayAlert("Error",response.Message,"Aceptar");
                 return;
             }
 
@@ -131,19 +267,19 @@ namespace VesApp.ViewModels
             this.IsRefreshing = false;
         }
 
-        public async void LoadPredications()
+        public async void LoadRefreshPredications()
         {
             this.IsRefreshing = true;
-            /*
+            
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");                
+                await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");                
                 return;
             }
-            */
+            
 
             var response = await this.apiService.GetList<Predication>(
                 "http://vesappapi.azurewebsites.net",
@@ -153,7 +289,7 @@ namespace VesApp.ViewModels
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
 
@@ -162,19 +298,19 @@ namespace VesApp.ViewModels
             this.IsRefreshing = false;
         }
 
-        public async void LoadProjects()
+        public async void LoadRefreshProjects()
         {
             this.IsRefreshing = true;
-            /*
+            
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");                
+                await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");                
                 return;
             }
-            */
+            
 
             var response = await this.apiService.GetList<Project>(
                 "http://vesappapi.azurewebsites.net",
@@ -184,7 +320,7 @@ namespace VesApp.ViewModels
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
 
@@ -193,19 +329,19 @@ namespace VesApp.ViewModels
             this.IsRefreshing = false;
         }
 
-        public async void LoadEvents()
+        public async void LoadRefreshEvents()
         {
             this.IsRefreshing = true;
-            /*
+            
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");                
+                await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");                
                 return;
             }
-            */
+            
 
             var response = await this.apiService.GetList<Event>(
                 "http://vesappapi.azurewebsites.net",
@@ -215,7 +351,7 @@ namespace VesApp.ViewModels
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
 
@@ -226,24 +362,11 @@ namespace VesApp.ViewModels
         #endregion
 
         #region Commands
-        public ICommand DonarCommand
-        {
-            get
-            {
-                return new RelayCommand(Donar);
-            }
-        }
-
-        void Donar()
-        {
-            Device.OpenUri(new Uri("https://www.paypal.me/valorart"));
-        }
-
         public ICommand RefreshReflexionsCommand
         {
             get
             {
-                return new RelayCommand(LoadReflexions);
+                return new RelayCommand(LoadRefreshReflexions);
             }
         }
 
@@ -251,7 +374,7 @@ namespace VesApp.ViewModels
         {
             get
             {
-                return new RelayCommand(LoadPredications);
+                return new RelayCommand(LoadRefreshPredications);
             }
         }
 
@@ -259,7 +382,7 @@ namespace VesApp.ViewModels
         {
             get
             {
-                return new RelayCommand(LoadProjects);
+                return new RelayCommand(LoadRefreshProjects);
             }
         }
 
@@ -267,7 +390,7 @@ namespace VesApp.ViewModels
         {
             get
             {
-                return new RelayCommand(LoadEvents);
+                return new RelayCommand(LoadRefreshEvents);
             }
         }
         #endregion

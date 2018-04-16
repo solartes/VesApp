@@ -1,45 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VesApp.Views.ContactPage">
+             x:Class="VesApp.Views.ContactPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Contactenos">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView BindingContext="{Binding EmailViewModel}">
             <StackLayout Padding="10,20,10,10">
-                <Label Text="Nombre:"/>
-                <Entry Placeholder="Introduce tu nombre"/>
-                <Label Text="Correo:"/>
-                <Entry Placeholder="Introduce tu correo"/>
-                <Label Text="Celular:"/>
-                <Entry Placeholder="Introduce tu celular"/>
-                <Label Text="Asunto:"/>
-                <Entry />
-                <Label Text="Mensaje:"/>
-                <StackLayout>
-                    <StackLayout.BackgroundColor>
-                        <OnPlatform x:TypeArguments="Color">
-                            <OnPlatform.iOS>White</OnPlatform.iOS>
-                            <OnPlatform.Android>Transparent</OnPlatform.Android>
-                        </OnPlatform>
-                    </StackLayout.BackgroundColor>
-                    <StackLayout Padding="1">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Nombre: " TextColor="Black" VerticalOptions="Center" />
+                    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Nombre,Mode=TwoWay}"
+                                                        Placeholder="Introduce tu nombre" 
+                                                        Margin="0,0,0,10" />
+                    <Label Grid.Row="1" Grid.Column="0" TextColor="Black" VerticalOptions="Center" Text="Correo: "/>
+                    <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Correo,Mode=TwoWay}"
+                                                        Placeholder="Introduce tu correo" 
+                                                        Margin="0,0,0,10" />
+                    <Label Grid.Row="2" Grid.Column="0" TextColor="Black" VerticalOptions="Center" Text="Celular: "/>
+                    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Celular,Mode=TwoWay}"
+                                                        Placeholder="Introduce tu celular" 
+                                                        Margin="0,0,0,10" />
+                    <Label Grid.Row="3" Grid.Column="0" TextColor="Black" VerticalOptions="Center" Text="Asunto: "/>
+                    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Asunto,Mode=TwoWay}"
+                                                        Margin="0,0,0,10" />
+                    <Label Grid.Row="4" Grid.Column="0" TextColor="Black" VerticalOptions="Start" Text="Mensaje: "/>
+                    <StackLayout  Grid.Row="4" Grid.Column="1">
                         <StackLayout.BackgroundColor>
                             <OnPlatform x:TypeArguments="Color">
-                                <OnPlatform.iOS>#e9e9e9</OnPlatform.iOS>
+                                <OnPlatform.iOS>White</OnPlatform.iOS>
                                 <OnPlatform.Android>Transparent</OnPlatform.Android>
                             </OnPlatform>
                         </StackLayout.BackgroundColor>
-                        <Editor HeightRequest="150">
-                            <Editor.BackgroundColor>
+                        <StackLayout Padding="1">
+                            <StackLayout.BackgroundColor>
                                 <OnPlatform x:TypeArguments="Color">
-                                    <OnPlatform.iOS>White</OnPlatform.iOS>
+                                    <OnPlatform.iOS>#e9e9e9</OnPlatform.iOS>
                                     <OnPlatform.Android>Transparent</OnPlatform.Android>
                                 </OnPlatform>
-                            </Editor.BackgroundColor>
-                        </Editor>
+                            </StackLayout.BackgroundColor>
+                            <Editor Text="{Binding mensaje,Mode=TwoWay}" HeightRequest="150">
+                                <Editor.BackgroundColor>
+                                    <OnPlatform x:TypeArguments="Color">
+                                        <OnPlatform.iOS>White</OnPlatform.iOS>
+                                        <OnPlatform.Android>Transparent</OnPlatform.Android>
+                                    </OnPlatform>
+                                </Editor.BackgroundColor>
+                            </Editor>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
+                </Grid>
                 <StackLayout Padding="110,25,110,110">
-                    <Button BackgroundColor="Transparent" BorderWidth="1" BorderColor="#e9e9e9" Text="Enviar"></Button>
+                    <Button Command="{Binding SendContactCommand}"  BackgroundColor="Transparent" BorderWidth="1" BorderColor="#e9e9e9" Text="Enviar"></Button>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

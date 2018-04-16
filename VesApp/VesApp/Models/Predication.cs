@@ -52,7 +52,7 @@ namespace VesApp.Models
                 String video = "watch?v=" + idVideo;
                 Device.OpenUri(new Uri("vnd.youtube://" + video));
             }
-            catch (Exception e)
+            catch
             {
                 Device.OpenUri(new Uri(this.UrlVideo));
             }

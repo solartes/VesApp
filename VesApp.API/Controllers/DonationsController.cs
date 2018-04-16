@@ -35,72 +35,7 @@ namespace VesApp.API.Controllers
 
             return Ok(donation);
         }
-
-        // PUT: api/Donations/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutDonation(int id, Donation donation)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != donation.IdDonation)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(donation).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DonationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Donations
-        [ResponseType(typeof(Donation))]
-        public async Task<IHttpActionResult> PostDonation(Donation donation)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Donations.Add(donation);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = donation.IdDonation }, donation);
-        }
-
-        // DELETE: api/Donations/5
-        [ResponseType(typeof(Donation))]
-        public async Task<IHttpActionResult> DeleteDonation(int id)
-        {
-            Donation donation = await db.Donations.FindAsync(id);
-            if (donation == null)
-            {
-                return NotFound();
-            }
-
-            db.Donations.Remove(donation);
-            await db.SaveChangesAsync();
-
-            return Ok(donation);
-        }
+        
 
         protected override void Dispose(bool disposing)
         {

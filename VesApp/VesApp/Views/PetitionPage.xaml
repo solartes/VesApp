@@ -1,38 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VesApp.Views.PetitionPage">
+             x:Class="VesApp.Views.PetitionPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Peticiones">
     <ContentPage.Content>
-        <StackLayout Padding="10,20,10,10">
-            <Label Text="Nombre:"/>
-            <Entry Placeholder="Introduce tu nombre"/>
-            <Label Text="Peticion:"/>
-            <StackLayout>
-                <StackLayout.BackgroundColor>
-                    <OnPlatform x:TypeArguments="Color">
-                        <OnPlatform.iOS>White</OnPlatform.iOS>
-                        <OnPlatform.Android>Transparent</OnPlatform.Android>
-                    </OnPlatform>
-                </StackLayout.BackgroundColor>
-                <StackLayout Padding="1">
+        <StackLayout BindingContext="{Binding EmailViewModel}" Padding="10,20,10,10">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Nombre: " TextColor="Black" VerticalOptions="Center"/>
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Nombre,Mode=TwoWay}"
+                                                    Placeholder="Introduce tu nombre"
+                                                    Margin="0,0,0,10"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Peticion: " TextColor="Black" VerticalOptions="Start"/>
+                <StackLayout Grid.Row="1" Grid.Column="1">
                     <StackLayout.BackgroundColor>
                         <OnPlatform x:TypeArguments="Color">
-                            <OnPlatform.iOS>#e9e9e9</OnPlatform.iOS>
+                            <OnPlatform.iOS>White</OnPlatform.iOS>
                             <OnPlatform.Android>Transparent</OnPlatform.Android>
                         </OnPlatform>
                     </StackLayout.BackgroundColor>
-                    <Editor HeightRequest="150">
-                        <Editor.BackgroundColor>
+                    <StackLayout Padding="1">
+                        <StackLayout.BackgroundColor>
                             <OnPlatform x:TypeArguments="Color">
-                                <OnPlatform.iOS>White</OnPlatform.iOS>
+                                <OnPlatform.iOS>#e9e9e9</OnPlatform.iOS>
                                 <OnPlatform.Android>Transparent</OnPlatform.Android>
                             </OnPlatform>
-                        </Editor.BackgroundColor>
-                    </Editor>
+                        </StackLayout.BackgroundColor>
+                        <Editor Text="{Binding Peticion,Mode=TwoWay}" HeightRequest="150">
+                            <Editor.BackgroundColor>
+                                <OnPlatform x:TypeArguments="Color">
+                                    <OnPlatform.iOS>White</OnPlatform.iOS>
+                                    <OnPlatform.Android>Transparent</OnPlatform.Android>
+                                </OnPlatform>
+                            </Editor.BackgroundColor>
+                        </Editor>
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
+            </Grid>
             <StackLayout Padding="110,25,110,110">
-                <Button BackgroundColor="Transparent" BorderWidth="1" BorderColor="#e9e9e9" Text="Enviar"></Button>
+                <Button Command="{Binding SendPetitionCommand}"  BackgroundColor="Transparent" BorderWidth="1" BorderColor="#e9e9e9" Text="Enviar"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

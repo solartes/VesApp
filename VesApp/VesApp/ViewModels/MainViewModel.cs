@@ -31,6 +31,12 @@ namespace VesApp.ViewModels
             get;
             set;
         }
+
+        public EmailViewModel EmailViewModel
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors
@@ -57,42 +63,42 @@ namespace VesApp.ViewModels
                 },*/
                 new MenuItemViewModel
                 {
-                    Icon = "predicaciones.png",
+                    Icon = "ic_predicaciones.png",
                     PageName = "PredicationPage",
                     Title = "Predicaciones",
 
                 },
                 new MenuItemViewModel
                 {
-                    Icon = "proyectos.png",
+                    Icon = "ic_proyectos.png",
                     PageName = "ProjectPage",
                     Title = "Proyectos Sociales",
 
                 },
                 new MenuItemViewModel
                 {
-                    Icon = "evento.png",
+                    Icon = "ic_evento.png",
                     PageName = "EventPage",
                     Title = "Eventos",
 
                 },
                 new MenuItemViewModel
                 {
-                    Icon = "redes.png",
+                    Icon = "ic_redes.png",
                     PageName = "SocialMediaPage",
                     Title = "Redes Sociales",
 
                 },
                 new MenuItemViewModel
                 {
-                    Icon = "peticiones.png",
+                    Icon = "ic_peticiones.png",
                     PageName = "PetitionPage",
                     Title = "Peticiones",
 
                 },
                 new MenuItemViewModel
                 {
-                    Icon = "contactenos.png",
+                    Icon = "ic_contactenos.png",
                     PageName = "ContactPage",
                     Title = "Contactenos",
 

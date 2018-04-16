@@ -51,16 +51,17 @@ namespace VesApp.ViewModels
             if (this.PageName == "SocialMediaPage")
             {
                 MainViewModel.GetInstance().ImageViewModel = new ImageViewModel();
+                MainViewModel.GetInstance().ImageViewModel.LoadConfig();
                 await App.Navigator.PushAsync(new SocialMediaPage());
             }
             if (this.PageName == "PetitionPage")
             {
-                //MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
+                MainViewModel.GetInstance().EmailViewModel = new EmailViewModel();
                 await App.Navigator.PushAsync(new PetitionPage());
             }
             if (this.PageName == "ContactPage")
             {
-                //MainViewModel.GetInstance().PublicationViewModel.LoadPredications();
+                MainViewModel.GetInstance().EmailViewModel = new EmailViewModel();
                 await App.Navigator.PushAsync(new ContactPage());
             }
         }

@@ -24,7 +24,8 @@
                         <ViewCell>
                             <Frame                                
                                 HasShadow="true"
-                                Margin="8">
+                                Margin="8"
+                                HeightRequest="180">
                                 <Frame.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android" Value="10,10,10,10"/>

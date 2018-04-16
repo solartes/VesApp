@@ -12,6 +12,7 @@ using VesApp.Domain;
 
 namespace VesApp.Backend.Controllers
 {
+    [Authorize]
     public class DonationsController : Controller
     {
         private DataContextLocal db = new DataContextLocal();

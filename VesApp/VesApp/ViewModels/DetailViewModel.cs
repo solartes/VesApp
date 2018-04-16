@@ -45,7 +45,7 @@ namespace VesApp.ViewModels
 
         void Donar()
         {
-            Device.OpenUri(new Uri("https://www.paypal.me/valorart"));
+            Device.OpenUri(new Uri(MainViewModel.GetInstance().ImageViewModel.Donations[0].UrlDireccion));
         }
     }
 }

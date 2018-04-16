@@ -35,73 +35,7 @@ namespace VesApp.API.Controllers
 
             return Ok(reflexion);
         }
-
-        // PUT: api/Reflexions/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutReflexion(int id, Reflexion reflexion)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != reflexion.IdReflexion)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(reflexion).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ReflexionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Reflexions
-        [ResponseType(typeof(Reflexion))]
-        public async Task<IHttpActionResult> PostReflexion(Reflexion reflexion)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Reflexions.Add(reflexion);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = reflexion.IdReflexion }, reflexion);
-        }
-
-        // DELETE: api/Reflexions/5
-        [ResponseType(typeof(Reflexion))]
-        public async Task<IHttpActionResult> DeleteReflexion(int id)
-        {
-            Reflexion reflexion = await db.Reflexions.FindAsync(id);
-            if (reflexion == null)
-            {
-                return NotFound();
-            }
-
-            db.Reflexions.Remove(reflexion);
-            await db.SaveChangesAsync();
-
-            return Ok(reflexion);
-        }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

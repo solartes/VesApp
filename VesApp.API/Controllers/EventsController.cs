@@ -35,73 +35,7 @@ namespace VesApp.API.Controllers
 
             return Ok(@event);
         }
-
-        // PUT: api/Events/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutEvent(int id, Event @event)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != @event.IdEvent)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(@event).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EventExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Events
-        [ResponseType(typeof(Event))]
-        public async Task<IHttpActionResult> PostEvent(Event @event)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Events.Add(@event);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = @event.IdEvent }, @event);
-        }
-
-        // DELETE: api/Events/5
-        [ResponseType(typeof(Event))]
-        public async Task<IHttpActionResult> DeleteEvent(int id)
-        {
-            Event @event = await db.Events.FindAsync(id);
-            if (@event == null)
-            {
-                return NotFound();
-            }
-
-            db.Events.Remove(@event);
-            await db.SaveChangesAsync();
-
-            return Ok(@event);
-        }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
