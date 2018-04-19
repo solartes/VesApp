@@ -24,8 +24,13 @@
                         <ViewCell>
                             <Frame                                
                                 HasShadow="true"
-                                Margin="8"
-                                HeightRequest="180">
+                                Margin="8">
+                                <Frame.HeightRequest>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <On Platform="Android" Value="185"/>
+                                        <On Platform="iOS" Value="235"/>
+                                    </OnPlatform>
+                                </Frame.HeightRequest>
                                 <Frame.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android" Value="10,10,10,10"/>

@@ -6,7 +6,7 @@
              Title="Redes Sociales">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding ImageViewModel}">
-            <Label TextColor="#5b5555" FontAttributes="Bold" FontSize="Large" Text="Siguenos en..."/>
+            <Label TextColor="#5b5555" FontAttributes="Bold" FontSize="Large" Text="Síguenos en..."/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Image Source="ic_instagram.png">
                     <Image.GestureRecognizers>
@@ -23,7 +23,7 @@
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
-            <Label TextColor="#5b5555" FontAttributes="Bold" FontSize="Large" Text="Contactanos..."/>
+            <Label TextColor="#5b5555" FontAttributes="Bold" FontSize="Large" Text="Contáctanos..."/>
             <StackLayout HorizontalOptions="Start">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="ic_telefono.png"/>

@@ -100,7 +100,7 @@ namespace VesApp.ViewModels
                 {
                     Icon = "ic_contactenos.png",
                     PageName = "ContactPage",
-                    Title = "Contactenos",
+                    Title = "Contáctenos",
 
                 }
             };

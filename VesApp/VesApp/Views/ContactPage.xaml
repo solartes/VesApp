@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VesApp.Views.ContactPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Contactenos">
+             Title="Contáctenos">
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding EmailViewModel}">
             <StackLayout Padding="10,20,10,10">

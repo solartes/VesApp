@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Input;
 using VesApp.ViewModels;
 using VesApp.Views;
+using Xamarin.Forms;
 
 namespace VesApp.Models
 {
@@ -32,6 +33,32 @@ namespace VesApp.Models
         {
             MainViewModel.GetInstance().DetailViewModel = new DetailViewModel(evento: this);
             await App.Navigator.PushAsync(new DetailEventPage());            
+        }
+
+        public ICommand OpenOnlineCommand
+        {
+            get
+            {
+                return new RelayCommand(OpenOnline);
+            }
+        }
+
+        void OpenOnline()
+        {
+                Device.OpenUri(new Uri(this.EnlaceOnline));            
+        }
+
+        public ICommand OpenInscripcionCommand
+        {
+            get
+            {
+                return new RelayCommand(OpenInscripcion);
+            }
+        }
+
+        void OpenInscripcion()
+        {
+            Device.OpenUri(new Uri(this.EnlaceInscripcion));
         }
         #endregion
     }

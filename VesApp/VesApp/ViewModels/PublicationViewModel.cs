@@ -101,38 +101,39 @@ namespace VesApp.ViewModels
 
         #region Methods
         public async void LoadReflexions()
-        {
-            if (Reflexions == null)
-            {
-                this.IsRefreshing = true;
-
-                var connection = await this.apiService.CheckConnection();
-
-                if (!connection.IsSuccess)
+        {              
+                if (Reflexions == null)
                 {
+                    this.IsRefreshing = true;
+
+                    var connection = await this.apiService.CheckConnection();
+
+                    if (!connection.IsSuccess)
+                    {
+                        this.IsRefreshing = false;
+                        await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                        return;
+                    }
+
+
+                    var response = await this.apiService.GetList<Reflexion>(
+                        "http://vesappapi.azurewebsites.net",
+                        "/api",
+                        "/Reflexions");
+
+                    if (!response.IsSuccess)
+                    {
+                        this.IsRefreshing = false;
+                        await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                        return;
+                    }
+
+                    var list = (List<Reflexion>)response.Result;
+                    this.Reflexions = new ObservableCollection<Reflexion>(list);
                     this.IsRefreshing = false;
-                    await App.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
-                    return;
                 }
-
-
-                var response = await this.apiService.GetList<Reflexion>(
-                    "http://vesappapi.azurewebsites.net",
-                    "/api",
-                    "/Reflexions");
-
-                if (!response.IsSuccess)
-                {
-                    this.IsRefreshing = false;
-                    await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
-                    return;
-                }
-
-                var list = (List<Reflexion>)response.Result;
-                this.Reflexions = new ObservableCollection<Reflexion>(list);
-                this.IsRefreshing = false;
-            }
-        }
+               
+         }
 
         public async void LoadPredications()
         {
@@ -203,7 +204,7 @@ namespace VesApp.ViewModels
         }
 
         public async void LoadEvents()
-        {
+        {            
             if (Events == null)
             {
                 this.IsRefreshing = true;
@@ -233,11 +234,11 @@ namespace VesApp.ViewModels
                 var list = (List<Event>)response.Result;
                 this.Events = new ObservableCollection<Event>(list);
                 this.IsRefreshing = false;
-            }
+            }            
         }
 
         public async void LoadRefreshReflexions()
-        {
+        {            
             this.IsRefreshing = true;
             
             var connection = await this.apiService.CheckConnection();
@@ -264,7 +265,7 @@ namespace VesApp.ViewModels
 
             var list = (List<Reflexion>)response.Result;
             this.Reflexions = new ObservableCollection<Reflexion>(list);
-            this.IsRefreshing = false;
+            this.IsRefreshing = false;            
         }
 
         public async void LoadRefreshPredications()

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VesApp.Views.MenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Menu">
+             Title="Menú">
     <ContentPage.Content>
         <StackLayout Spacing="5">
             <Image Source="logo.jpg"

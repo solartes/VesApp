@@ -23,7 +23,7 @@
                 <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Nombre,Mode=TwoWay}"
                                                     Placeholder="Introduce tu nombre"
                                                     Margin="0,0,0,10"/>
-                <Label Grid.Row="1" Grid.Column="0" Text="Peticion: " TextColor="Black" VerticalOptions="Start"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Petición: " TextColor="Black" VerticalOptions="Start"/>
                 <StackLayout Grid.Row="1" Grid.Column="1">
                     <StackLayout.BackgroundColor>
                         <OnPlatform x:TypeArguments="Color">

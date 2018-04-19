@@ -5,56 +5,47 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="{Binding DetailViewModel.Evento.Titulo}">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout BindingContext="{Binding DetailViewModel}" Padding="5">
-            <StackLayout Orientation="Horizontal">
-                <Label  FontSize="Medium"
-                        Text="Evento: "
-                        TextColor="Black"
-                        VerticalOptions="Center"/>
-                <Label  VerticalOptions="Center"
-                        Text="{Binding Evento.Titulo}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label  FontSize="Medium"
-                        Text="Lugar: "
-                        TextColor="Black"
-                        VerticalOptions="Center"/>
-                <Label  VerticalOptions="Center"
-                        Text="{Binding Evento.Lugar}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label  Text="Fecha: "
-                        FontSize="Medium"
-                        TextColor="Black"
-                        VerticalOptions="Center"/>
-                <Label/>
-                <Label  VerticalOptions="Center"
-                        Text="{Binding Evento.FechaEvento,StringFormat='{0:dd/MM/yyyy}'}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label  FontSize="Medium"
-                        Text="Hora: "
-                        TextColor="Black"
-                        VerticalOptions="Center"/>
-                <Label  VerticalOptions="Center"
-                        Text="{Binding Evento.Hora}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label  FontSize="Medium"
-                        Text="Inscripcion en: "
-                        TextColor="Black"
-                        VerticalOptions="Center"/>
-                <Label  VerticalOptions="Center"
-                        Text="{Binding Evento.EnlaceInscripcion}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label  FontSize="Medium"
-                        Text="Evento en vivo en: "
-                        TextColor="Black"
-                        VerticalOptions="Center"/>
-                <Label  VerticalOptions="End"
-                        Text="{Binding Evento.EnlaceOnline}"/>
-            </StackLayout>
-         </StackLayout>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Evento : " FontSize="Medium" TextColor="Black" VerticalOptions="Center" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Evento.Titulo}" Margin="0,0,0,10"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Lugar : " FontSize="Medium" TextColor="Black" VerticalOptions="Center" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Evento.Lugar}" Margin="0,0,0,10"/>
+                <Label Grid.Row="2" Grid.Column="0" Text="Fecha : " FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Evento.FechaEvento,StringFormat='{0:dd/MM/yyyy}'}" Margin="0,0,0,10"/>
+                <Label Grid.Row="3" Grid.Column="0" Text="Hora : " FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Evento.Hora}" Margin="0,0,0,10"/>
+                <Label Grid.Row="4" Grid.Column="0" Text="Descripción : " FontSize="Medium" TextColor="Black" VerticalOptions="Start"/>
+                <Label Grid.Row="4" Grid.Column="1" Text="{Binding Evento.Text}" Margin="0,0,0,10"/>
+                <Label Grid.Row="5" Grid.Column="0" Text="Inscripción en: " FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
+                <Label Grid.Row="5" Grid.Column="1" Text="{Binding Evento.EnlaceInscripcion}" TextColor="#4378FD" Margin="0,0,0,10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Evento.OpenInscripcionCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Grid.Row="6" Grid.Column="0" Text="Evento en vivo en: " FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
+                <Label Grid.Row="6" Grid.Column="1" Text="{Binding Evento.EnlaceOnline}" TextColor="#4378FD" Margin="0,0,0,10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Evento.OpenOnlineCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
