@@ -54,13 +54,13 @@ namespace VesApp.ViewModels
         {
             this.Menus = new ObservableCollection<MenuItemViewModel>
             {
-                /*new MenuItemViewModel
+                new MenuItemViewModel
                 {
-                    Icon = "reflexion.png",
+                    Icon = "ic_reflexion.png",
                     PageName = "ReflexionPage",
                     Title = "Reflexión del evangelio",
 
-                },*/
+                },
                 new MenuItemViewModel
                 {
                     Icon = "ic_predicaciones.png",
@@ -94,6 +94,13 @@ namespace VesApp.ViewModels
                     Icon = "ic_peticiones.png",
                     PageName = "PetitionPage",
                     Title = "Peticiones",
+
+                },
+                new MenuItemViewModel
+                {
+                    Icon = "ic_ic_menu_donaciones.png",
+                    PageName = "DonationPage",
+                    Title = "Donaciones",
 
                 },
                 new MenuItemViewModel

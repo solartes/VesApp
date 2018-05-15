@@ -28,7 +28,6 @@ namespace VesApp.Models
 
         async void SelectProject()
         {
-
             MainViewModel.GetInstance().ImageViewModel = new ImageViewModel();
             MainViewModel.GetInstance().ImageViewModel.LoadConfig();
             MainViewModel.GetInstance().DetailViewModel = new DetailViewModel(project: this);

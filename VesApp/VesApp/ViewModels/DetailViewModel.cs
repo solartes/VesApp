@@ -15,6 +15,10 @@ namespace VesApp.ViewModels
         public Project Project { get; set; }
         public Event Evento { get; set; }
 
+        public DetailViewModel()
+        {
+        }
+
         public DetailViewModel(Reflexion reflexion)
         {
             Reflexion = reflexion;

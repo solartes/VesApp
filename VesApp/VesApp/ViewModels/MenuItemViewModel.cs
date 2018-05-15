@@ -59,6 +59,13 @@ namespace VesApp.ViewModels
                 MainViewModel.GetInstance().EmailViewModel = new EmailViewModel();
                 await App.Navigator.PushAsync(new PetitionPage());
             }
+            if (this.PageName == "DonationPage")
+            {
+                MainViewModel.GetInstance().ImageViewModel = new ImageViewModel();
+                MainViewModel.GetInstance().ImageViewModel.LoadConfig();
+                MainViewModel.GetInstance().DetailViewModel = new DetailViewModel();
+                await App.Navigator.PushAsync(new DonationPage());
+            }
             if (this.PageName == "ContactPage")
             {
                 MainViewModel.GetInstance().EmailViewModel = new EmailViewModel();
