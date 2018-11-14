@@ -55,10 +55,19 @@ namespace VesApp.Backend.Controllers
             {
                 if (project.UrlImagen == null)
                 {
-                    string urlVideo = project.UrlVideo;
-                    int index = urlVideo.LastIndexOf('/');
-                    String idVideo = urlVideo.Substring(index + 1);
-                    String urlImagen = "https://img.youtube.com/vi/" + idVideo + "/0.jpg";
+                    string urlVideo = project.UrlVideo;                    
+                    var uri = new Uri(urlVideo);
+                    var query = HttpUtility.ParseQueryString(uri.Query);
+                    var videoId = string.Empty;
+                    if (query.AllKeys.Contains("v"))
+                    {
+                        videoId = query["v"];
+                    }
+                    else
+                    {
+                        videoId = uri.Segments.Last();
+                    }
+                    String urlImagen = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
                     project.UrlImagen = urlImagen;
                 }
                 db.Projects.Add(project);
@@ -93,6 +102,23 @@ namespace VesApp.Backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (project.UrlImagen == null)
+                {
+                    string urlVideo = project.UrlVideo;
+                    var uri = new Uri(urlVideo);
+                    var query = HttpUtility.ParseQueryString(uri.Query);
+                    var videoId = string.Empty;
+                    if (query.AllKeys.Contains("v"))
+                    {
+                        videoId = query["v"];
+                    }
+                    else
+                    {
+                        videoId = uri.Segments.Last();
+                    }
+                    String urlImagen = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
+                    project.UrlImagen = urlImagen;
+                }
                 db.Entry(project).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

@@ -56,9 +56,18 @@ namespace VesApp.Backend.Controllers
                 if (predication.UrlImagen == null)
                 {
                     string urlVideo = predication.UrlVideo;
-                    int index = urlVideo.LastIndexOf('/');
-                    String idVideo = urlVideo.Substring(index + 1);
-                    String urlImagen = "https://img.youtube.com/vi/" + idVideo + "/0.jpg";
+                    var uri = new Uri(urlVideo);
+                    var query = HttpUtility.ParseQueryString(uri.Query);
+                    var videoId = string.Empty;
+                    if (query.AllKeys.Contains("v"))
+                    {
+                        videoId = query["v"];
+                    }
+                    else
+                    {
+                        videoId = uri.Segments.Last();
+                    }
+                    String urlImagen = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
                     predication.UrlImagen = urlImagen;
                 }
                 db.Predications.Add(predication);
@@ -92,6 +101,23 @@ namespace VesApp.Backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (predication.UrlImagen == null)
+                {
+                    string urlVideo = predication.UrlVideo;
+                    var uri = new Uri(urlVideo);
+                    var query = HttpUtility.ParseQueryString(uri.Query);
+                    var videoId = string.Empty;
+                    if (query.AllKeys.Contains("v"))
+                    {
+                        videoId = query["v"];
+                    }
+                    else
+                    {
+                        videoId = uri.Segments.Last();
+                    }
+                    String urlImagen = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
+                    predication.UrlImagen = urlImagen;
+                }
                 db.Entry(predication).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

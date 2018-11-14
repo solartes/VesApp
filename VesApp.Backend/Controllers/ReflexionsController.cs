@@ -56,9 +56,18 @@ namespace VesApp.Backend.Controllers
                 if (reflexion.UrlImagen==null)
                 {
                     string urlVideo = reflexion.UrlVideo;
-                    int index = urlVideo.LastIndexOf('/');
-                    String idVideo = urlVideo.Substring(index + 1);
-                    String urlImagen = "https://img.youtube.com/vi/" + idVideo + "/0.jpg";
+                    var uri = new Uri(urlVideo);
+                    var query = HttpUtility.ParseQueryString(uri.Query);                
+                    var videoId = string.Empty;
+                    if (query.AllKeys.Contains("v"))
+                    {
+                        videoId = query["v"];
+                    }
+                    else
+                    {
+                        videoId = uri.Segments.Last();
+                    }
+                    String urlImagen = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
                     reflexion.UrlImagen = urlImagen;
                 }
                 db.Reflexions.Add(reflexion);
@@ -93,6 +102,23 @@ namespace VesApp.Backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (reflexion.UrlImagen == null)
+                {
+                    string urlVideo = reflexion.UrlVideo;
+                    var uri = new Uri(urlVideo);
+                    var query = HttpUtility.ParseQueryString(uri.Query);
+                    var videoId = string.Empty;
+                    if (query.AllKeys.Contains("v"))
+                    {
+                        videoId = query["v"];
+                    }
+                    else
+                    {
+                        videoId = uri.Segments.Last();
+                    }
+                    String urlImagen = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
+                    reflexion.UrlImagen = urlImagen;
+                }
                 db.Entry(reflexion).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
